@@ -14,10 +14,11 @@ pipeline {
           steps {
             echo "Building ${PROJECT} with log level ${LOG_LEVEL} on linux"
             sh 'chmod +x scripts/build.sh'
-            withCredentials([string(credentialsId: 'my-key-here', variable: 'API_KEY')])
-            sh '''
-              ./scripts/build.sh
-            '''                   
+            withCredentials([string(credentialsId: 'my-key-here', variable: 'API_KEY')]){
+              sh '''
+                ./scripts/build.sh
+              '''
+            }                   
           }
         }
         stage("windows"){
