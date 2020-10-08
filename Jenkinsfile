@@ -13,7 +13,6 @@ pipeline {
         stage("linux"){
           steps {
             echo "Building ${PROJECT} with log level ${LOG_LEVEL} on linux"
-            ''
             sh 'chmod +x scripts/build.sh'
             sh '''
               ./scripts/build.sh
