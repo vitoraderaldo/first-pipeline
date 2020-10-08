@@ -53,6 +53,7 @@ pipeline {
     }
     success {
       archiveArtifacts "test-results.txt"
+      slackSend channel: '#software', message "The project was deployed with success"
     }
   }
 }
