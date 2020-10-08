@@ -41,9 +41,12 @@ pipeline {
       }
     }
   }
-  post {    
+  post{
+    always {
+      echo 'Always print this'
+    }
     success {
-      archieveArtifacts "test-results.txt"
+      archiveArtifacts "test-results.txt"
     }
   }
 }
