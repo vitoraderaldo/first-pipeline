@@ -8,15 +8,17 @@ pipeline {
     stage('Build') {
       environment {
         LOG_LEVEL='INFO'
+      }
+      steps {
+        sh 'chmod +x scripts/build.sh'
+        sh '''
+          ./scripts/build.sh
+        '''                   
       }      
       parallel {
         stage("linux"){
           steps {
-            echo "Building ${PROJECT} with log level ${LOG_LEVEL} on linux"
-            sh 'chmod +x scripts/build.sh'
-            sh '''
-              ./scripts/build.sh
-            '''                   
+            echo "Building ${PROJECT} with log level ${LOG_LEVEL} on linux"                           
           }
         }
         stage("windows"){
