@@ -9,6 +9,12 @@ pipeline {
       environment {
         LOG_LEVEL='INFO'
       }
+      steps {
+        sh 'chmod +x scripts/build.sh'
+        sh '''
+          ./scripts/build.sh
+        '''
+      }
       parallel {
         stage("linux"){
           steps {
