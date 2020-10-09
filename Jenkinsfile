@@ -52,8 +52,7 @@ pipeline {
       echo 'Always print this'
     }
     success {
-      archiveArtifacts "test-results.txt"
-      slackSend channel: '#software', message "The project was deployed with success"
+      archiveArtifacts "test-results.txt"      
     }
   }
 }
